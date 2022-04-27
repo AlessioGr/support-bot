@@ -15,6 +15,11 @@ const client = new Client({
     intents: [
         "GUILDS",
         "GUILD_MESSAGES"
+    ],
+    partials: [ //What the bot should react to BEFORE the bot logged in
+        "MESSAGE",
+        "CHANNEL",
+        "REACTION",
     ]
 });
 

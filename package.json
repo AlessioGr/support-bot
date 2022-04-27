@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/App.ts",
   "scripts": {
-    "start": "ts-node src/App.ts"
+    "start": "ts-node src/App.ts",
+    "devStart": "nodemon src/App.ts",
   },
   "author": "Shay DeWael",
   "license": "MIT",
