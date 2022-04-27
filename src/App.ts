@@ -1,6 +1,9 @@
 import { Client } from "discord.js";
 import interactionCreate from "./listeners/InteractionCreate";
 import ready from "./listeners/Ready";
+import messageCreate from "./listeners/MessageCreate";
+import messageDelete from "./listeners/MessageDelete";
+import messageUpdate from "./listeners/MessageUpdate";
 import 'dotenv/config';
 
 const TOKEN = process.env.DISCORD_TOKEN;
@@ -17,13 +20,9 @@ const client = new Client({
 
 interactionCreate(client);
 ready(client);
-
-//Legacy listeners:
-client.on("messageCreate", async (message) => {
-    if (message.content.startsWith("!ping")) {
-        message.reply("pong!");
-    }
-});
+messageCreate(client);
+messageDelete(client);
+messageUpdate(client);
 
 client.login(TOKEN);
 
