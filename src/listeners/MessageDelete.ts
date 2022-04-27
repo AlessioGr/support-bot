@@ -1,13 +1,11 @@
-import {Client, MessageEmbed, TextChannel } from "discord.js";
+import { Client, MessageEmbed, TextChannel } from "discord.js";
 import 'dotenv/config';
-import {handleMessageDeletion} from "../MessageUploadingManager";
+import { handleMessageDeletion } from "../MessageUploadingManager";
 
 const supportChannelID = process.env.SUPPORT_CHANNEL_ID;
 
 export default (client: Client): void => {
     client.on("messageDelete", async (message) => {
-
-
 
         if(message.channelId != supportChannelID){
             if(message.channel.type == "GUILD_PUBLIC_THREAD" && message.channel.parentId == supportChannelID){
@@ -41,7 +39,6 @@ export default (client: Client): void => {
 
             threadAttachedToMessage.setArchived(true);
             console.log("Deleted thread: ",  threadAttachedToMessage.name);
-
         }
 
     });

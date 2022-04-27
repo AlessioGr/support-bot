@@ -1,6 +1,6 @@
 import {Client} from "discord.js";
 import 'dotenv/config';
-import {handleMessageUpdate} from "../MessageUploadingManager";
+import { handleMessageUpdate } from "../MessageUploadingManager";
 
 const supportChannelID = process.env.SUPPORT_CHANNEL_ID;
 

@@ -1,4 +1,4 @@
-import {Message, PartialMessage, ThreadChannel} from "discord.js";
+import { Message, PartialMessage, ThreadChannel } from "discord.js";
 
 export function handleMessageDeletion(message: Message<boolean> | PartialMessage, thread: ThreadChannel){
     if(message.content?.length == 0){

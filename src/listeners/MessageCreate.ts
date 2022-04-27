@@ -1,6 +1,6 @@
-import {Client, MessageEmbed, TextChannel, ThreadChannel} from "discord.js";
+import { Client, MessageEmbed, TextChannel, ThreadChannel } from "discord.js";
 import 'dotenv/config';
-import {handleMessageCreation} from "../MessageUploadingManager";
+import { handleMessageCreation}  from "../MessageUploadingManager";
 
 const supportChannelID = process.env.SUPPORT_CHANNEL_ID;
 
@@ -22,10 +22,6 @@ export default (client: Client): void => {
         if(message.author.bot || message.author.system){
             return;
         }
-
-
-        const channel: TextChannel = message.channel;
-
         const thread: ThreadChannel = await message.startThread({
             name: message.content,
             autoArchiveDuration: 1440,
@@ -34,7 +30,6 @@ export default (client: Client): void => {
 
         console.log(`Created thread: ${thread.name}`);
 
-        //console.log("thread:", thread);
 
         const suggestEmbed = new MessageEmbed()
             .setColor('#FEE75C')
@@ -50,9 +45,5 @@ export default (client: Client): void => {
             });
 
         thread.send({embeds: [suggestEmbed]});
-
-        /*if (message.content.startsWith("!ping")) {
-            message.reply("pong!");
-        }*/
     });
 };

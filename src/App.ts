@@ -23,6 +23,7 @@ const client = new Client({
     ]
 });
 
+//Initialize listeners
 interactionCreate(client);
 ready(client);
 messageCreate(client);
