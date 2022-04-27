@@ -1,5 +1,5 @@
 {
-  "name": "libbing",
+  "name": "support-bot",
   "version": "1.0.0",
   "description": "",
   "main": "src/App.ts",
@@ -7,8 +7,8 @@
     "start": "ts-node src/App.ts",
     "devStart": "nodemon src/App.ts"
   },
-  "author": "Shay DeWael",
-  "license": "MIT",
+  "author": "Alessio Gravili",
+  "license": "GPL-3",
   "dependencies": {
     "@types/node": "^17.0.29",
     "discord-interactions": "^3.2.0",
