@@ -1,11 +1,11 @@
-import { BaseCommandInteraction, Client } from "discord.js";
+import { Client, CommandInteraction, ApplicationCommandType } from "discord.js";
 import { Command } from "../Command";
 
 export const Hello: Command = {
     name: "hello",
     description: "Returns a greeting",
-    type: "CHAT_INPUT",
-    run: async (client: Client, interaction: BaseCommandInteraction) => {
+    type: ApplicationCommandType.ChatInput,
+    run: async (client: Client, interaction: CommandInteraction) => {
         const content = "Hello there!";
 
         await interaction.followUp({

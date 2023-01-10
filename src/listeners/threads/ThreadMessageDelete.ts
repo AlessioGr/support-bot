@@ -1,6 +1,6 @@
-import { Client, MessageEmbed, TextChannel } from "discord.js";
+import { ChannelType, Client, EmbedBuilder, TextChannel } from "discord.js";
 import 'dotenv/config';
-import { handleMessageDeletion } from "../MessageUploadingManager";
+import { handleThreadMessageDeletion } from "../../MessageUploadingManager";
 
 const supportChannelID = process.env.SUPPORT_CHANNEL_ID;
 
@@ -8,9 +8,9 @@ export default (client: Client): void => {
     client.on("messageDelete", async (message) => {
 
         if(message.channelId != supportChannelID){
-            if(message.channel.type == "GUILD_PUBLIC_THREAD" && message.channel.parentId == supportChannelID){
+            if(message.channel.type == ChannelType.PublicThread && message.channel.parentId == supportChannelID){
                 //Handle deleting the message from the REST API
-                handleMessageDeletion(message, message.channel);
+                handleThreadMessageDeletion(message, message.channel);
             }
             return;
         }
@@ -28,7 +28,7 @@ export default (client: Client): void => {
 
         //Archive thread
         if(threadAttachedToMessage) {
-            const deletedEmbed = new MessageEmbed()
+            const deletedEmbed = new EmbedBuilder()
                 .setColor('#ff0000')
                 .setTitle(`Thread Archived`)
                 .setDescription(`This thread has been archived because the original message was deleted.`);
